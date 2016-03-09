@@ -44,9 +44,43 @@ function getCartRecords() {
   return cartRecords || [];
 }
 
-function setCartRecords(cartRecords) {
+function setCartRecord(cartRecord) {
 
-  if (cartRecords) {
+  if (cartRecord) {
+
+    var cartRecords = getCartRecords();
+    var record = findCartRecord(cartRecord.barcode, cartRecords)
+
+    if (record) {
+      record.count = cartRecord.count;
+      if (cartRecord.count == 0) {
+        deleteCartRecord(record, cartRecords);
+        return;
+      }
+    } else if(cartRecord.count != 0) {
+      cartRecords.push(cartRecord);
+    }
+
     localStorage.setItem("cartRecords", JSON.stringify(cartRecords));
+  }
+}
+
+function findCartRecord(barcode, cartRecords) {
+
+  for (var i = 0; i < cartRecords.length; i++) {
+
+    if(cartRecords[i].barcode === barcode) {
+      return cartRecords[i];
+    }
+  }
+}
+
+function deleteCartRecord(cartRecord, cartRecords) {
+  for (var i = 0; i < cartRecords.length; i++) {
+    if (cartRecords[i].barcode === cartRecord.barcode) {
+      cartRecords.splice(i, 1);
+      localStorage.setItem("cartRecords", JSON.stringify(cartRecords));
+      return;
+    }
   }
 }
