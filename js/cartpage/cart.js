@@ -19,10 +19,12 @@ function setBtnAction() {
 
 function displayItemsList(allItems, cartRecords) {
   $('#cartCount').html(getTotalItemNumber());
-
+  var total = 0;
   cartRecords.forEach(function(cartRecord) {
     var item = getItem(cartRecord.barcode, allItems);
 
+    total += item.price * cartRecord.count;
+    $('#total').html("总计：￥"+total);
     var tr =
       "<tr class='row'>" +
       "<td>" + item.name + "</td>" +
@@ -70,6 +72,7 @@ function bindCheckOutBtnAction() {
     var receipt = generateReceipt(cartRecords, allItems);
     setCurrentReceipt(receipt);
     storeInList(receipt);
+    clearCart();
     window.location.href = '../../html/receipt.html';
   });
 }

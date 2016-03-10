@@ -3,7 +3,7 @@ $(document).ready(function() {
 });
 
 function loadReceiptPage() {
-  clearCart();
+  $('#cartCount').html(getTotalItemNumber());
   var receipt = getCurrentReceipt();
   displayReceipt(receipt);
   setNavBtnAction();

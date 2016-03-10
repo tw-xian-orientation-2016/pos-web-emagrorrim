@@ -10,6 +10,20 @@
 
     <script src="../js/nav-btn-action.js" charset="utf-8"></script>
     <script src="../js/receiptpage/receipt.js" charset="utf-8"></script>
+
+    <style media="screen">
+      .starline {
+        display: none;
+      }
+    </style>
+    <style media="print">
+      #backHomeBtn {
+        display: none;
+      }
+      .starline {
+        display: block;
+      }
+    </style>
   </head>
   <body>
 
@@ -45,9 +59,18 @@
       </table>
     </article>
 
-    <div class="text-center">
-      <div id="totalPrice"><span></span>$0.00</div>
-      <input type="button" id="backHomeBtn" class="btn btn-lg btn-danger" value="返回">
+    <div class="starline">
+      ************************************************************************************************************************************************
+    </div>
+
+    <div class="text-center row">
+      <div class="col-xs-8"></div>
+      <p class="col-xs-2">总计：</p>
+      <div id="totalPrice" class="col-xs-1">￥0.00</div>
+      <div class="col-xs-1"></div>
+      <div class="col-xs-10"></div>
+      <input type="button" id="backHomeBtn" class="btn btn-lg btn-danger col-xs-1 btn-xs" value="返回">
+      <div class="col-xs-1"></div>
     </div>
 
 
