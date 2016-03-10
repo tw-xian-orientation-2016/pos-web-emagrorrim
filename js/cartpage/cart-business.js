@@ -43,5 +43,6 @@ function getReceipt(receiptItems) {
   receiptItems.forEach(function(receiptItem) {
     total += receiptItem.total;
   });
-  return { receiptItems: receiptItems, total: total }
+
+  return { receiptItems: receiptItems, total: total, date: Date() }
 }

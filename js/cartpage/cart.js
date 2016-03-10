@@ -6,7 +6,15 @@ function loadCartPage() {
   var allItems = getAllItems();
   var cartRecords = getCartRecords();
   displayItemsList(allItems, cartRecords);
+  setBtnAction();
+}
+
+function setBtnAction() {
   setLogoBtnAction();
+  setReceiptBtnAction();
+  bindItemCountAction();
+  bindDeleteBtnAction();
+  bindCheckOutBtnAction();
 }
 
 function displayItemsList(allItems, cartRecords) {
@@ -29,9 +37,7 @@ function displayItemsList(allItems, cartRecords) {
     $("#tableView").append(tr);
   });
 
-  bindItemCountAction();
-  bindDeleteBtnAction();
-  bindCheckOutBtnAction();
+
 }
 
 function bindItemCountAction() {
@@ -64,7 +70,7 @@ function bindCheckOutBtnAction() {
     var cartRecords = getCartRecords("cartRecords");
     var receipt = generateReceipt(cartRecords, allItems);
     setCurrentReceipt(receipt);
-
+    storeInList(receipt);
     window.location.href = '../../html/receipt.html';
   });
 }

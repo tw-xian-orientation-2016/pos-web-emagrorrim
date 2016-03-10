@@ -7,6 +7,7 @@ function loadHomePage() {
   var cartRecords = getCartRecords();
   displayItemsList(allItems, cartRecords);
   setCartBtnAction();
+  setReceiptBtnAction();
 }
 
 function displayItemsList(allItems, cartRecords) {

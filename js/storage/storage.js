@@ -49,6 +49,10 @@ function findCartRecord(barcode, cartRecords) {
   }
 }
 
+function clearCart() {
+  localStorage.setItem("cartRecords","[]");
+}
+
 function deleteCartRecord(cartRecord, cartRecords) {
   for (var i = 0; i < cartRecords.length; i++) {
     if (cartRecords[i].barcode === cartRecord.barcode) {
@@ -64,5 +68,19 @@ function setCurrentReceipt(receipt) {
 }
 
 function getCurrentReceipt() {
-  localStorage.getItem('currentReceipt');
+  return JSON.parse(localStorage.getItem('currentReceipt'));
+}
+
+function storeInList(receipt) {
+  var receipts = getReceiptList();
+  receipts.push(receipt);
+  setReceiptList(receipts)
+}
+
+function setReceiptList(receipts) {
+  localStorage.setItem('receiptList', JSON.stringify(receipts));
+}
+
+function getReceiptList() {
+  return JSON.parse(localStorage.getItem('receiptList')) || [];
 }
