@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  loadHomePage();
+  loadCartPage();
 });
 
-function loadHomePage() {
+function loadCartPage() {
   var allItems = getAllItems();
   var cartRecords = getCartRecords();
   displayItemsList(allItems, cartRecords);
@@ -31,6 +31,7 @@ function displayItemsList(allItems, cartRecords) {
 
   bindItemCountAction();
   bindDeleteBtnAction();
+  bindCheckOutBtnAction();
 }
 
 function bindItemCountAction() {
@@ -60,9 +61,10 @@ function bindDeleteBtnAction() {
 function bindCheckOutBtnAction() {
   $('#checkOutBtn').click(function() {
     var allItems = getAllItems();
-    var cartRecords = getCartRecords();
-    generateReceipt(allItems, cartRecords);
+    var cartRecords = getCartRecords("cartRecords");
+    var receipt = generateReceipt(cartRecords, allItems);
+    setCurrentReceipt(receipt);
 
-    window.location.href = '../html/receipt.html';
+    window.location.href = '../../html/receipt.html';
   });
 }

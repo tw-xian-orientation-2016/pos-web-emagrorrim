@@ -58,3 +58,11 @@ function deleteCartRecord(cartRecord, cartRecords) {
     }
   }
 }
+
+function setCurrentReceipt(receipt) {
+  localStorage.setItem('currentReceipt', JSON.stringify(receipt));
+}
+
+function getCurrentReceipt() {
+  localStorage.getItem('currentReceipt');
+}

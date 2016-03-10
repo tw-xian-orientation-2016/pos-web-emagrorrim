@@ -1,5 +1,7 @@
 function setNavBtnAction() {
   setCartBtnAction();
+  setLogoBtnAction();
+  setReceiptBtnAction();
 }
 
 function setCartBtnAction() {
@@ -14,7 +16,7 @@ function setLogoBtnAction() {
   });
 }
 
-function setBtnAction() {
+function setReceiptBtnAction() {
   $('#receiptBtn').click(function() {
     window.location.href = '../html/receipt-list.html';
   });
