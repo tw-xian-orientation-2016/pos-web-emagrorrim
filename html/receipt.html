@@ -13,30 +13,43 @@
   </head>
   <body>
 
-    <nav class="navBar">
-      <input type="button" id="logoBtn" value="LOGO">
-      <input type="button" id="receiptBtn" value="购物记录">
-      <input type="button" id="cartBtn" value="购物车">
-      <span id="cartCount"></span>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+          <button type="button" id="logoBtn" class="btn btn-default navbar-btn">
+            没钱赚商店
+          </button>
+          <button type="button" id="receiptBtn" class="btn btn-default navbar-btn pull-right">
+            购物记录
+          </button>
+          <button type="button" id="cartBtn"  class="btn btn-default navbar-btn pull-right">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span id="cartCount" class="badge"></span>
+          </button>
+      </div>
     </nav>
 
-    <header>
-      <div class="line"></div>
-      <h1 class="text-center">发票</h1>
-    </header>
-
-    <article class="container">
-      <table id="tableView">
-        <tr>
-          <span class="tableHeadTitle text-center">名称</span>
-          <span class="tableHeadTitle text-center">单价(元)</span>
-          <span class="tableHeadTitle text-center">单位</span>
-          <span class="tableHeadTitle text-center">小计(元)</span>
+    <article class="panel panel-danger text-center">
+      <div class="panel-heading">
+        <div class="page-header">
+          <h1 class="text-center">没钱赚商店<small>发票</small></h1>
+        </div>
+      </div>
+      <table id="tableView" class="table  text-center">
+        <tr class="row">
+          <td class="tableHeadTitle">名称</td>
+          <td class="tableHeadTitle">单价(元)</td>
+          <td class="tableHeadTitle">单位</td>
+          <td class="tableHeadTitle">数量</td>
+          <td class="tableHeadTitle">小计(元)</td>
         </tr>
       </table>
-      <div id="totalPrice">$0.00</div>
-      <input type="button" id="backHomeBtn" value="返回">
     </article>
+
+    <div class="text-center">
+      <div id="totalPrice"><span></span>$0.00</div>
+      <input type="button" id="backHomeBtn" class="btn btn-lg btn-danger" value="返回">
+    </div>
+
 
   </body>
 </html>

@@ -9,6 +9,15 @@ function getAllItems() {
   ];
 }
 
+function getTotalItemNumber() {
+  var cartRecords = getCartRecords();
+  var total = 0;
+  cartRecords.forEach(function(cartRecord) {
+    total += cartRecord.count;
+  });
+  return total;
+}
+
 function getCartRecords() {
   var cartRecords = JSON.parse(localStorage.getItem("cartRecords"));
   return cartRecords || [];

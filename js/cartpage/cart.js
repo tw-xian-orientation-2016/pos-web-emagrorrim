@@ -18,7 +18,7 @@ function setBtnAction() {
 }
 
 function displayItemsList(allItems, cartRecords) {
-  $('#cartCount').html(cartRecords.length);
+  $('#cartCount').html(getTotalItemNumber());
 
   cartRecords.forEach(function(cartRecord) {
     var item = getItem(cartRecord.barcode, allItems);
@@ -26,11 +26,11 @@ function displayItemsList(allItems, cartRecords) {
     var tr =
       "<tr class='row'>" +
       "<td>" + item.name + "</td>" +
-      "<td>" + item.price + "</td>" +
+      "<td>￥" + item.price.toFixed(2) + "</td>" +
       "<td>" + item.unit + "</td>" +
-      "<td><input type='text' data-barcode='" + item.barcode +
+      "<td><input type='text' class='form-control text-center' data-barcode='" + item.barcode +
       "' name='itemCount' value='" + cartRecord.count + "'/></td>" +
-      "<td><input type='button' data-barcode='" + item.barcode +
+      "<td><input type='button' class='btn btn-danger btn-xs' data-barcode='" + item.barcode +
       "' name='deleteBtn' value='删除'/></td>"
       "</tr>";
 
@@ -59,8 +59,7 @@ function bindDeleteBtnAction() {
     setCartRecord({ barcode: this.dataset.barcode, count: 0 });
 
     $(this).parents('tr').remove();
-    var cartRecords = getCartRecords();
-    $('#cartCount').html(cartRecords.length);
+    $('#cartCount').html(getTotalItemNumber());
   });
 }
 

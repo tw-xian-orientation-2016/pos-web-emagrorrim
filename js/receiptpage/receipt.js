@@ -17,17 +17,14 @@ function displayReceipt(receipt) {
 
   var receiptItems = receipt.receiptItems;
 
-  var headtr = "<tr class='row'>" + receipt.date + "</tr>"
-  $("#tableView").append(headtr);
-
   receiptItems.forEach(function(receiptItem) {
     var tr =
       "<tr class='row'>" +
       "<td>" + receiptItem.cartItem.item.name + "</td>" +
-      "<td>" + receiptItem.cartItem.item.price + "</td>" +
+      "<td>￥" + receiptItem.cartItem.item.price.toFixed(2) + "</td>" +
       "<td>" + receiptItem.cartItem.item.unit + "</td>" +
       "<td>" + receiptItem.cartItem.count + "</td>" +
-      "<td>" + receiptItem.total + "</td>" +
+      "<td>" + receiptItem.total.toFixed(2) + "</td>" +
       "</tr>";
 
     $("#tableView").append(tr);
@@ -35,7 +32,7 @@ function displayReceipt(receipt) {
 }
 
 function displayTotalPrice(total) {
-  var totalPrice = '$' + total.toFixed(2);
+  var totalPrice = '￥' + total.toFixed(2);
   $('#totalPrice').html(totalPrice);
 }
 
