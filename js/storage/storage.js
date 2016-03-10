@@ -17,22 +17,27 @@ function getCartRecords() {
 function setCartRecord(cartRecord) {
 
   if (cartRecord) {
-    var cartRecords = getCartRecords();
-    var record = findCartRecord(cartRecord.barcode, cartRecords)
+    var cartRecords = updateCartRecords(cartRecord);
 
-    if (record) {
-      record.count = cartRecord.count;
-      if (cartRecord.count == 0) {
-        deleteCartRecord(record, cartRecords);
-        return;
-      }
-    } else if(cartRecord.count != 0) {
-      cartRecords.push(cartRecord);
-    }
-    
     localStorage.setItem("cartRecords", JSON.stringify(cartRecords));
   }
 }
+
+function updateCartRecords(cartRecord) {
+  var cartRecords = getCartRecords();
+  var record = findCartRecord(cartRecord.barcode, cartRecords)
+
+  if (record) {
+    record.count = cartRecord.count;
+    if (cartRecord.count == 0) {
+      deleteCartRecord(record, cartRecords);
+    }
+  } else if(cartRecord.count != 0) {
+    cartRecords.push(cartRecord);
+  }
+  return cartRecords;
+}
+
 
 function findCartRecord(barcode, cartRecords) {
 

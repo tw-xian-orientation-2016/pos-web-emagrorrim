@@ -22,15 +22,18 @@ function displayItemsList(allItems, cartRecords) {
       "<td>" + item.unit + "</td>" +
       "<td><input type='text' data-barcode='" + item.barcode +
       "' name='itemCount' value='" + cartRecord.count + "'/></td>" +
+      "<td><input type='button' data-barcode='" + item.barcode +
+      "' name='deleteBtn' value='删除'/></td>"
       "</tr>";
 
     $("#tableView").append(tr);
   });
 
-  bindMethod();
+  bindItemCountMethod();
+  bindDeleteBtnMethod();
 }
 
-function bindMethod() {
+function bindItemCountAction() {
   $('input[name="itemCount"]').change(function() {
     var count = $(this).val();
     if (count === '') {
@@ -44,10 +47,14 @@ function bindMethod() {
   });
 }
 
-function getItem(barcode, allItems) {
-  for (var i = 0; i < allItems.length; i++) {
-    if (barcode === allItems[i].barcode) {
-      return allItems[i];
-    }
-  }
+function bindDeleteBtnAction() {
+  $('input[name="deleteBtn"]').click(function() {
+    setCartRecord({ barcode: this.dataset.barcode, count: 0 });
+
+    $(this).parents('tr').remove();
+    var cartRecords = getCartRecords();
+    $('#cartCount').html(cartRecords.length);
+  });
+
+
 }
