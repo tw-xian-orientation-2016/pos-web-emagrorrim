@@ -29,8 +29,8 @@ function displayItemsList(allItems, cartRecords) {
     $("#tableView").append(tr);
   });
 
-  bindItemCountMethod();
-  bindDeleteBtnMethod();
+  bindItemCountAction();
+  bindDeleteBtnAction();
 }
 
 function bindItemCountAction() {
@@ -55,6 +55,14 @@ function bindDeleteBtnAction() {
     var cartRecords = getCartRecords();
     $('#cartCount').html(cartRecords.length);
   });
+}
 
+function bindCheckOutBtnAction() {
+  $('#checkOutBtn').click(function() {
+    var allItems = getAllItems();
+    var cartRecords = getCartRecords();
+    generateReceipt(allItems, cartRecords);
 
+    window.location.href = '../html/receipt.html';
+  });
 }

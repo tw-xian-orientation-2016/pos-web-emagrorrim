@@ -5,3 +5,7 @@ function getItem(barcode, allItems) {
     }
   }
 }
+
+function generateReceipt(cartRecord, allItems) {
+
+}
