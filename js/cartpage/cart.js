@@ -6,14 +6,14 @@ function loadHomePage() {
   var allItems = getAllItems();
   var cartRecords = getCartRecords();
   displayItemsList(allItems, cartRecords);
-  setCartBtnAction();
+  setLogoBtnAction();
 }
 
 function displayItemsList(allItems, cartRecords) {
   $('#cartCount').html(cartRecords.length);
 
-  allItems.forEach(function(item) {
-    var count = getPurchasedCount(item.barcode, cartRecords);
+  cartRecords.forEach(function(cartRecord) {
+    var item = getItem(cartRecord.barcode, allItems);
 
     var tr =
       "<tr class='row'>" +
@@ -21,7 +21,7 @@ function displayItemsList(allItems, cartRecords) {
       "<td>" + item.price + "</td>" +
       "<td>" + item.unit + "</td>" +
       "<td><input type='text' data-barcode='" + item.barcode +
-      "' name='itemCount' value='" + count + "'/></td>" +
+      "' name='itemCount' value='" + cartRecord.count + "'/></td>" +
       "</tr>";
 
     $("#tableView").append(tr);
@@ -42,4 +42,12 @@ function bindMethod() {
     var cartRecords = getCartRecords();
     $('#cartCount').html(cartRecords.length);
   });
+}
+
+function getItem(barcode, allItems) {
+  for (var i = 0; i < allItems.length; i++) {
+    if (barcode === allItems[i].barcode) {
+      return allItems[i];
+    }
+  }
 }

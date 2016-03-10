@@ -3,27 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>No Money No Happy</title>
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="lib/jquery/jquery.js" charset="utf-8"></script>
-    <script src="js/storage/storage.js" charset="utf-8"></script>
-    <script src="js/nav-btn-action.js" charset="utf-8"></script>
-    <script src="js/homepage/home-business.js" charset="utf-8"></script>
-    <script src="js/homepage/home.js" charset="utf-8"></script>
+    <title>Cart</title>
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../lib/jquery/jquery.js" charset="utf-8"></script>
+    <script src="../js/storage/storage.js" charset="utf-8"></script>
+    <script src="../js/nav-btn-action.js" charset="utf-8"></script>
+    <script src="../js/cartpage/cart.js" charset="utf-8"></script>
 
-    </script>
   </head>
   <body>
+
     <nav class="navBar">
       <input type="button" id="logoBtn" value="LOGO">
       <input type="button" id="receiptBtn" value="购物记录">
       <input type="button" id="cartBtn" value="购物车">
       <span id="cartCount"></span>
     </nav>
+
     <header>
       <div class="line"></div>
-      <h1 class="text-center">商品列表</h1>
+      <h1 class="text-center">购物车</h1>
     </header>
+
     <article class="container">
       <table id="tableView">
         <tr>
@@ -33,6 +34,9 @@
           <span class="tableHeadTitle text-center">数量</div>
         </tr>
       </table>
+
+      <input type="button" id="checkOutBtn" value="结算">
     </article>
+
   </body>
 </html>
