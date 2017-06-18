@@ -93,3 +93,5 @@ function setReceiptList(receipts) {
 function getReceiptList() {
   return JSON.parse(localStorage.getItem('receiptList')) || [];
 }
+
+module.exports = getAllItems;

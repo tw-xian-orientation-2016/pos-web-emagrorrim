@@ -46,3 +46,5 @@ function getReceipt(receiptItems) {
 
   return { receiptItems: receiptItems, total: total, date: Date() }
 }
+
+module.exports = getCartItems;
